@@ -1,0 +1,428 @@
+@import "../../App.scss";
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Sora:wght@700;800&display=swap");
+
+/* =========================
+   TOKENS
+   ========================= */
+:root {
+  /* Colors */
+  --hdr-bg: #0b0f16;
+  --hdr-fg: #eef1f5;
+  --muted: #a6adbb;
+  --accent: #ff8c49;
+
+  /* Surfaces / glass */
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-br: rgba(255, 255, 255, 0.08);
+  --glass-hover: rgba(255, 255, 255, 0.07);
+  --link-active-bg: linear-gradient(
+    180deg,
+    rgba(255, 140, 73, 0.22),
+    rgba(255, 140, 73, 0.18)
+  );
+
+  /* Type */
+  --font-ui: "Plus Jakarta Sans", Inter, system-ui, -apple-system, Segoe UI,
+    sans-serif;
+  --font-brand: "Sora", Raleway, system-ui, sans-serif;
+
+  /* Shape */
+  --r-xs: 8px;
+  --r-sm: 10px;
+  --r-md: 12px;
+  --r-lg: 14px;
+  --r-xl: 18px;
+
+  /* Effects */
+  --underline: rgba(255, 255, 255, 0.16);
+  --ring: rgba(255, 140, 73, 0.5);
+  --ring-soft: rgba(255, 140, 73, 0.25);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+  /* Title */
+  --title-grad: linear-gradient(92deg, #fff 0%, #ffd6c2 40%, #ffffff 100%);
+}
+
+/* =========================
+   WRAPPER
+   ========================= */
+.AppHeader {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  color: var(--hdr-fg);
+  background: radial-gradient(
+      1000px 120px at 12% 0%,
+      rgba(255, 140, 73, 0.08),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.02),
+      rgba(255, 255, 255, 0) 60%
+    ),
+    var(--hdr-bg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  font-family: var(--font-ui);
+}
+
+/* top accent line */
+.topbar {
+  height: 4px;
+  background: linear-gradient(90deg, #ffb165, #ff8c49 40%, #ff6d3a);
+}
+
+/* layout container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 16px;
+}
+
+/* grid */
+.navwrap {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  column-gap: 16px;
+  row-gap: 6px;
+}
+
+/* =========================
+   BRAND
+   ========================= */
+.brand {
+  display: grid;
+  gap: 2px;
+  justify-items: start;
+}
+.brand__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.brand__badge {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: radial-gradient(
+    120% 120% at 20% 20%,
+    #ffe3d1,
+    #ff8c49 60%,
+    #ff6d3a
+  );
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(255, 140, 73, 0.35);
+  transition: transform 0.18s ease;
+}
+.brand__link:hover .brand__badge {
+  transform: translateY(-1px) scale(1.02);
+}
+.brand__badge-e {
+  font-family: var(--font-brand);
+  font-weight: 800;
+  font-size: 20px;
+  color: #111;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.brand__title {
+  position: relative;
+  display: inline-grid;
+  align-items: end;
+}
+.brand__name {
+  font-family: var(--font-brand);
+  font-weight: 800;
+  font-size: clamp(22px, 3.2vw, 28px);
+  letter-spacing: -0.2px;
+  line-height: 1.04;
+  background: var(--title-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+.brand__underline {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffffff, #ffb165 45%, #ff6d3a);
+  margin-top: 4px;
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.45s ease-out;
+  box-shadow: 0 1px 12px rgba(255, 140, 73, 0.25);
+}
+.brand__link:hover .brand__underline {
+  transform: scaleX(1);
+}
+
+.brand__tag {
+  margin-top: 1px;
+  font-size: 12.5px;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+}
+
+a.brand__link,
+a.brand__link * {
+  text-decoration: none !important;
+}
+
+/* =========================
+   NAV – glass segmented group
+   ========================= */
+.nav {
+  min-width: 0;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-br);
+  border-radius: var(--r-lg);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.nav__item {
+  position: relative;
+}
+
+.nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #e8ecf1;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: var(--r-md);
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.18s ease, transform 0.06s ease, box-shadow 0.18s ease,
+    color 0.12s ease;
+}
+.nav__link:hover {
+  background: var(--glass-hover);
+}
+.nav__link:active {
+  transform: translateY(1px);
+}
+.nav__link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+/* Active pill */
+.nav__link[aria-current="page"] {
+  color: #e7e7e7;
+  background: var(--link-active-bg);
+  box-shadow: 0 8px 20px rgba(255, 140, 73, 0.28),
+    inset 0 0 0 1px rgba(255, 140, 73, 0.55);
+}
+.nav__link[aria-current="page"]::after {
+  display: none;
+} /* wir nutzen den Pill */
+
+.badge {
+  margin-left: 4px;
+  background: $main-yellow;
+  color: #111;
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 0 6px;
+  line-height: 1.25;
+  font-size: 11px;
+  min-width: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
+   DESKTOP: LANGUAGE SELECT
+   ========================= */
+.lang-select {
+  position: relative;
+}
+
+.lang-select select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: rgba(255, 255, 255, 0.03);
+  color: #e5e7eb;
+  border: 1px solid var(--glass-br);
+  border-radius: var(--r-lg);
+  padding: 10px 40px 10px 14px;
+  font-size: 14px;
+  line-height: 1.25;
+  min-width: 172px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s,
+    transform 0.06s;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23e5e7eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.lang-select select:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+.lang-select select:active {
+  transform: translateY(1px);
+}
+.lang-select select:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ring-soft);
+  border-color: var(--accent);
+}
+.lang-select select option {
+  color: #e5e7eb;
+  background-color: #0b1220;
+}
+
+/* =========================
+   MOBILE: LANGUAGE CHIPS
+   ========================= */
+.lang-rail {
+  display: none;
+  background: #0d121c;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.lang-rail .rail {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 12px;
+  scrollbar-width: thin;
+}
+.chip {
+  border: 1px solid #22324a;
+  background: #101826;
+  color: var(--hdr-fg);
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s, transform 0.06s,
+    box-shadow 0.18s;
+}
+.chip:hover {
+  background: #0f172a;
+}
+.chip:active {
+  transform: translateY(1px);
+}
+.chip:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring-soft);
+}
+.chip.is-active {
+  background: var(--accent);
+  color: #111;
+  border-color: var(--accent);
+  box-shadow: 0 8px 20px rgba(255, 140, 73, 0.35);
+}
+
+/* =========================
+   VISIBILITY HELPERS
+   ========================= */
+.desktop-only {
+  display: block;
+}
+.mobile-only {
+  display: none;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (min-width: 981px) {
+  .brand__name {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 980px) {
+  .navwrap {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+  }
+  .brand__tag {
+    display: none;
+  }
+  .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: block;
+  }
+
+  .nav {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+  }
+  .nav__list {
+    width: 100%;
+    justify-content: space-between;
+    gap: 4px;
+    overflow: hidden;
+    padding: 4px;
+    border-radius: var(--r-md);
+  }
+  .nav__link {
+    padding: 6px 8px;
+    border-radius: 10px;
+    font-size: clamp(13px, 2.9vw, 13px);
+    line-height: 1.05;
+  }
+  .badge {
+    font-size: 10px;
+    padding: 0 5px;
+    min-width: 16px;
+  }
+
+  .lang-rail {
+    display: block;
+  }
+}
+
+/* =========================
+   ACCESSIBILITY
+   ========================= */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  &:focus {
+    left: 12px;
+    top: 12px;
+    background: $main-yellow;
+    color: #111;
+    padding: 8px 12px;
+    border-radius: 10px;
+    z-index: 100;
+    box-shadow: 0 0 0 3px var(--ring);
+  }
+}

@@ -1,0 +1,544 @@
+/* ====== Typo-Empfehlung (Head + UI) ====== */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap");
+$font-ui: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue",
+  Arial, sans-serif;
+$font-head: "Manrope", $font-ui;
+
+/* ====== Design Tokens ====== */
+$hp-bg: #f7fafc;
+$hp-surface: #ffffff;
+$hp-text: #0f172a;
+$hp-muted: #64748b;
+
+$hp-primary: #fb923c;
+$hp-primary-600: #f97316;
+$hp-accent: #fbbf24;
+$hp-danger: #ef4444;
+
+$ring: 0 0 0 4px rgba(251, 146, 60, 0.22);
+
+$sh-sm: 0 1px 2px rgba(2, 6, 23, 0.06);
+$sh-md: 0 8px 24px rgba(2, 6, 23, 0.1);
+
+:root {
+  --ring: #{$ring};
+}
+:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.Homepage {
+  color: $hp-text;
+  font-family: $font-ui;
+
+  .Main {
+    background: $hp-bg;
+  }
+
+  /* ========== HERO (kutu yok) ========== */
+  .hero {
+    position: relative;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: clamp(24px, 6vw, 48px) 16px 18px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    overflow: visible;
+  }
+  .hero__bg {
+    position: absolute;
+    inset: -12% -10% auto -10%;
+    height: 200px;
+    background: radial-gradient(
+        60% 60% at 15% 20%,
+        rgba($hp-primary, 0.1),
+        transparent 60%
+      ),
+      radial-gradient(
+        55% 55% at 85% 25%,
+        rgba($hp-accent, 0.1),
+        transparent 60%
+      );
+    filter: blur(36px);
+    pointer-events: none;
+  }
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .hp-title {
+    font-family: $font-head;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    font-size: clamp(32px, 5.2vw, 56px);
+    line-height: 1.06;
+    margin: 0 0 0.45rem;
+  }
+  .hp-subtitle {
+    color: $hp-muted;
+    margin: 0 auto 1rem;
+    max-width: 760px;
+  }
+  .link-quiet {
+    color: $hp-primary-600;
+    text-decoration: none;
+    border-bottom: 1px dotted rgba($hp-primary-600, 0.45);
+  }
+  .link-quiet:hover {
+    border-bottom-color: transparent;
+  }
+
+  /* ========== Arama ========== */
+  .hp-search {
+    margin: 0 auto 0.6rem;
+    position: relative;
+    z-index: 5;
+  }
+  .search-group {
+    display: grid;
+    grid-template-columns: 1fr auto; /* Mic entfernt */
+    gap: 0.6rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .search-group input[type="search"] {
+    height: 50px;
+    padding: 0 1rem;
+    border-radius: 14px;
+    border: 1px solid rgba(2, 6, 23, 0.1);
+    background: $hp-surface;
+    box-shadow: $sh-sm;
+    font-size: 1rem;
+    transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+  }
+  .search-group input[type="search"]:focus {
+    border-color: rgba(251, 146, 60, 0.55);
+    box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.18);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 0;
+    border-radius: 14px;
+    padding: 0.78rem 1.1rem;
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background 0.15s, transform 0.06s, box-shadow 0.15s;
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+  .btn-primary {
+    background: $hp-primary;
+    color: #fff;
+    box-shadow: 0 12px 22px rgba(249, 115, 22, 0.22);
+  }
+  .btn-primary:hover {
+    background: $hp-primary-600;
+  }
+
+  /* Öneriler – overlay (push-free) */
+  .suggestions {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: min(720px, calc(100% - 32px));
+    background: $hp-surface;
+    border-radius: 16px;
+    box-shadow: $sh-md;
+    overflow: hidden;
+    text-align: left;
+    z-index: 100;
+  }
+  .suggestions ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.25rem;
+  }
+  .suggestions__section {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.78rem;
+    color: $hp-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .suggestions li[role="option"] {
+    padding: 0.6rem 0.75rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+  .suggestions li[role="option"]:hover,
+  .suggestions li[aria-selected="true"] {
+    background: rgba($hp-primary, 0.06);
+  }
+
+  /* ========== Desktop Özellik Kısayolları ========== */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  .feature-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    text-decoration: none;
+    color: $hp-text;
+    box-shadow: 0 1px 6px rgba(2, 6, 23, 0.06);
+    transition: transform 0.08s, box-shadow 0.15s, background 0.15s;
+    font-weight: 700;
+  }
+  .feature-pill:hover {
+    transform: translateY(-1px);
+    background: #fff;
+    box-shadow: 0 12px 24px rgba(2, 6, 23, 0.1);
+  }
+  .feature-pill .icon {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 10px;
+    background: #fff7ed;
+    color: $hp-primary;
+  }
+  .pill-badge {
+    margin-left: 0.4rem;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: #fff7ed;
+    color: $hp-primary;
+    font-weight: 800;
+    font-size: 12px;
+    display: inline-grid;
+    place-items: center;
+  }
+
+  /* ========== Popüler ========== */
+  .popular {
+    max-width: 1280px;
+    margin: 18px auto 0;
+    padding: 0 16px;
+  }
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-header h2 {
+    margin: 0;
+    font-size: clamp(20px, 3vw, 28px);
+    font-family: $font-head;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  .btn-refresh {
+    background: $hp-accent;
+    color: #1f2937;
+    font-weight: 800;
+    height: 40px;
+    padding: 0 1rem;
+    border-radius: 999px;
+    border: 0;
+    box-shadow: 0 10px 18px rgba(245, 158, 11, 0.22);
+  }
+  .btn-refresh:hover {
+    filter: brightness(0.98);
+  }
+
+  /* Durumlar */
+  .skeleton-list {
+    margin-top: 8px;
+  }
+  .skeleton-line {
+    height: 14px;
+    border-radius: 999px;
+    margin: 8px 0;
+    background: linear-gradient(90deg, #eef1f6 25%, #f6f7fb 37%, #eef1f6 63%);
+    background-size: 400% 100%;
+    animation: shimmer 1.1s linear infinite;
+  }
+  @keyframes shimmer {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  .inline-error,
+  .inline-empty {
+    margin-top: 10px;
+    font-weight: 600;
+    color: $hp-muted;
+  }
+  .inline-error {
+    color: #b91c1c;
+  }
+
+  /* ========== Liste – pro & kompakt ========== */
+  .vocab-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 4px;
+  }
+  .vocab-list.compact {
+    --row-py: 8px;
+    --arrow-w: 16px;
+  } /* extra dicht mobil */
+  @media (min-width: 1024px) {
+    .vocab-list {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 20px;
+    }
+    .vocab-list.compact {
+      --row-py: 11px;
+      --arrow-w: 20px;
+    }
+  }
+
+  .vocab-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: var(--row-py) 0;
+    border-bottom: 1px solid rgba(2, 6, 23, 0.06);
+    transition: background 0.12s ease;
+  }
+  .vocab-row:hover {
+    background: rgba($hp-primary, 0.035);
+  }
+
+  .vocab-left {
+    display: grid;
+    grid-template-columns: minmax(120px, 48%) var(--arrow-w) minmax(0, 1fr);
+    gap: 8px;
+    align-items: baseline;
+    min-width: 0;
+  }
+  .vocab-left .base {
+    font-weight: 800;
+    font-size: 0.98rem;
+    line-height: 1.2;
+    letter-spacing: 0.1px;
+    overflow-wrap: anywhere;
+  }
+  .vocab-left .arrow {
+    color: $hp-primary;
+    text-align: center;
+    opacity: 0.95;
+  }
+  .vocab-left .target {
+    color: $hp-muted;
+    font-size: 0.98rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .row-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .chip-action {
+    height: 26px;
+    padding: 0 10px;
+    font-size: 12.5px;
+    border-radius: 999px;
+    border: 0;
+    background: #f3f4f6;
+    transition: background 0.16s, transform 0.06s;
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+  .chip-action.primary {
+    background: rgba($hp-primary, 0.12);
+    color: $hp-primary;
+  }
+  .chip-action.primary:hover {
+    background: rgba($hp-primary, 0.16);
+  }
+  .chip-action.neutral {
+    background: #f3f4f6;
+  }
+  .chip-action.neutral:hover {
+    background: #edeff3;
+  }
+  .chip-action.outline {
+    background: transparent;
+    color: #111;
+    box-shadow: inset 0 0 0 1px #d9dbe0;
+  }
+  .chip-action.outline:hover {
+    background: #fafafa;
+  }
+
+  /* ========== Mobil ========== */
+  @media (max-width: 767px) {
+    .features {
+      display: none;
+    } /* Header kapsıyor */
+    .hero {
+      padding: max(16px, env(safe-area-inset-top)) 16px 10px;
+    }
+    .hp-search {
+      position: sticky;
+      top: max(8px, env(safe-area-inset-top));
+      z-index: 20;
+      backdrop-filter: saturate(1.1) blur(6px);
+      -webkit-backdrop-filter: saturate(1.1) blur(6px);
+      margin-bottom: 8px;
+    }
+    .search-group {
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem;
+    } /* Mic yok */
+    .search-group input[type="search"] {
+      height: 44px;
+    }
+    .btn-primary {
+      height: 44px;
+      padding: 0 0.95rem;
+    }
+    .row-actions {
+      display: none;
+    } /* mobil: modal */
+  }
+
+  /* ========== Mobil Modal ========== */
+  .mobile-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease-out;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes slideUp {
+    from {
+      transform: translateY(12px);
+      opacity: 0;
+    }
+    to {
+      transform: none;
+      opacity: 1;
+    }
+  }
+
+  .mobile-modal-content {
+    background: $hp-surface;
+    border-radius: 16px;
+    padding: 16px 14px;
+    width: 92%;
+    max-width: 380px;
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.18);
+    position: relative;
+    animation: slideUp 0.22s ease-out;
+  }
+  .close-button {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 18px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+  }
+  .close-button:hover {
+    opacity: 1;
+  }
+
+  .mobile-word {
+    display: grid;
+    grid-template-columns: minmax(120px, 40%) 16px minmax(0, 1fr);
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .mobile-word .base {
+    font-weight: 800;
+  }
+  .mobile-word .arrow {
+    color: $hp-primary;
+    text-align: center;
+  }
+  .mobile-word .target {
+    color: $hp-muted;
+  }
+
+  .modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .modal-actions button {
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #e4e6eb;
+    border-radius: 12px;
+    background: #f7f8fa;
+    transition: background 0.15s, transform 0.06s, border-color 0.15s;
+    cursor: pointer;
+  }
+  .modal-actions button:hover {
+    background: #eef1f6;
+  }
+  .modal-actions button:active {
+    transform: translateY(1px);
+  }
+  .remove-completely-button {
+    color: $hp-danger;
+    background: #ffe6e6 !important;
+    border-color: #ffd3d3 !important;
+  }
+  .remove-completely-button:hover {
+    background: #ffd7d7 !important;
+  }
+}

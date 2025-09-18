@@ -1,0 +1,29 @@
+0000000000000000000000000000000000000000 0dd81acf0032a13ed2a8d2233b46cb86d4f902a5 kutaykurt <kutay_kurt@gmx.de> 1750558649 +0200	commit (initial): first commit
+0dd81acf0032a13ed2a8d2233b46cb86d4f902a5 0000000000000000000000000000000000000000 kutaykurt <kutay_kurt@gmx.de> 1750558671 +0200	Branch: renamed refs/heads/main to refs/heads/main
+0dd81acf0032a13ed2a8d2233b46cb86d4f902a5 0dd81acf0032a13ed2a8d2233b46cb86d4f902a5 kutaykurt <kutay_kurt@gmx.de> 1750558671 +0200	Branch: renamed refs/heads/main to refs/heads/main
+0dd81acf0032a13ed2a8d2233b46cb86d4f902a5 d261033ba34db337a533f6f95dfc91482ed77a96 kutaykurt <kutay_kurt@gmx.de> 1751035590 +0200	commit: changed and added many languages
+d261033ba34db337a533f6f95dfc91482ed77a96 d46c18feab40fc80cdd734ff17a7ae56f05fb20e kutaykurt <kutay_kurt@gmx.de> 1751042994 +0200	commit: removed json data
+d46c18feab40fc80cdd734ff17a7ae56f05fb20e a72e477dcd4299542c806cc4d9ba380d92943c98 kutaykurt <kutay_kurt@gmx.de> 1751043069 +0200	pull origin main --rebase (start): checkout a72e477dcd4299542c806cc4d9ba380d92943c98
+a72e477dcd4299542c806cc4d9ba380d92943c98 3490e1563f3ff8c3bf4574cea7343f1a86877908 kutaykurt <kutay_kurt@gmx.de> 1751043069 +0200	pull origin main --rebase (pick): removed json data
+3490e1563f3ff8c3bf4574cea7343f1a86877908 3490e1563f3ff8c3bf4574cea7343f1a86877908 kutaykurt <kutay_kurt@gmx.de> 1751043069 +0200	pull origin main --rebase (finish): returning to refs/heads/main
+3490e1563f3ff8c3bf4574cea7343f1a86877908 7834de5e7ce94a404498309693f39cb89e7b46f2 kutaykurt <kutay_kurt@gmx.de> 1751043503 +0200	commit: Ignore local JSON files and remove them from repo
+7834de5e7ce94a404498309693f39cb89e7b46f2 f60f54af00e0417b4cfaaf8380f04bcf9d863db0 kutaykurt <kutay_kurt@gmx.de> 1751057879 +0200	commit: improved
+f60f54af00e0417b4cfaaf8380f04bcf9d863db0 79c3f05a1c4014f22c02455aa80a56a603b967e9 kutaykurt <kutay_kurt@gmx.de> 1751063014 +0200	commit: improved
+79c3f05a1c4014f22c02455aa80a56a603b967e9 98a512f073c420f393b274c48bece6d517cc1251 kutaykurt <kutay_kurt@gmx.de> 1754579843 +0200	commit: grammatik lernen hinzugefügt
+98a512f073c420f393b274c48bece6d517cc1251 cbbb23f251e99b3fc0dd7f20a80ba34ab8a6a983 kutaykurt <kutay_kurt@gmx.de> 1754579945 +0200	pull origin main --rebase (start): checkout cbbb23f251e99b3fc0dd7f20a80ba34ab8a6a983
+cbbb23f251e99b3fc0dd7f20a80ba34ab8a6a983 d764b4a2189923d0996b25718435612b95923392 kutaykurt <kutay_kurt@gmx.de> 1754579945 +0200	pull origin main --rebase (pick): improved
+d764b4a2189923d0996b25718435612b95923392 407b04b9d309819d3000c68a18272ae46d196810 kutaykurt <kutay_kurt@gmx.de> 1754579945 +0200	pull origin main --rebase (pick): improved
+407b04b9d309819d3000c68a18272ae46d196810 ac55a8a31c176e9c11d6f5b3ef20ee7115b91fa3 kutaykurt <kutay_kurt@gmx.de> 1754579945 +0200	pull origin main --rebase (pick): grammatik lernen hinzugefügt
+ac55a8a31c176e9c11d6f5b3ef20ee7115b91fa3 ac55a8a31c176e9c11d6f5b3ef20ee7115b91fa3 kutaykurt <kutay_kurt@gmx.de> 1754579945 +0200	pull origin main --rebase (finish): returning to refs/heads/main
+ac55a8a31c176e9c11d6f5b3ef20ee7115b91fa3 da51ca51c8bd5856117589c5667a34ab266935f3 kutaykurt <kutay_kurt@gmx.de> 1754678367 +0200	commit: Ux UI geändert
+da51ca51c8bd5856117589c5667a34ab266935f3 f0417f528ca2945d1c583ed97502a46a60380615 kutaykurt <kutay_kurt@gmx.de> 1754693214 +0200	commit: Grammar-page updated
+f0417f528ca2945d1c583ed97502a46a60380615 b6214138eda03ceb95f6e73f8da55e7b059294a2 kutaykurt <kutay_kurt@gmx.de> 1754694216 +0200	commit: header is turkish now
+b6214138eda03ceb95f6e73f8da55e7b059294a2 f43a4ab55d3b7fb7ed0d0d9292606439f241a389 kutaykurt <kutay_kurt@gmx.de> 1754695002 +0200	commit: fixed little problems with language
+f43a4ab55d3b7fb7ed0d0d9292606439f241a389 9b0339baea41cdf621233a61febd190bb87ad1ce kutaykurt <kutay_kurt@gmx.de> 1754707637 +0200	commit: disconnected firebase for now because too much renderin of API
+9b0339baea41cdf621233a61febd190bb87ad1ce 41587a4ad31aca237cbeed498bd6270ef0c8603d kutaykurt <kutay_kurt@gmx.de> 1754708880 +0200	commit: added hashrouter again
+41587a4ad31aca237cbeed498bd6270ef0c8603d bd68bb2b8227368f7c22a50b816cf1be4aa5c530 kutaykurt <kutay_kurt@gmx.de> 1754748271 +0200	commit: changed UX and UI and made evertything in turkish language
+bd68bb2b8227368f7c22a50b816cf1be4aa5c530 d894b0fa2b6373317765763724ed8162ecde0bb8 kutaykurt <kutay_kurt@gmx.de> 1755123394 +0200	commit: added new grammar levels and changed design
+d894b0fa2b6373317765763724ed8162ecde0bb8 25f08bda3cfe522f043cc928ffe8d14aee50541e kutaykurt <kutay_kurt@gmx.de> 1755185351 +0200	commit: shorter pages in grammar section. Every topic has its own page now.
+25f08bda3cfe522f043cc928ffe8d14aee50541e 283a6d7e3298637fddaa67c958cd4e314bebc2bf kutaykurt <kutay_kurt@gmx.de> 1755187231 +0200	commit: added 404.html
+283a6d7e3298637fddaa67c958cd4e314bebc2bf 94bf7fb4596a2359c4dc9ac13429fa358a75819c kutaykurt <kutay_kurt@gmx.de> 1755193401 +0200	commit: added new pages to .xml
+94bf7fb4596a2359c4dc9ac13429fa358a75819c 1013dcc351cf7f15550c8de57c092e846e6cb275 kutaykurt <kutay_kurt@gmx.de> 1755715915 +0200	commit: German grammar has been added

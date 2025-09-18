@@ -1,0 +1,114 @@
+@import "../../App.scss";
+
+.Footer {
+  background-color: $main-black;
+  color: $main-white;
+  padding: 30px 20px 10px;
+
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-section {
+    flex: 1;
+    min-width: 200px;
+
+    h1,
+    h2 {
+      color: $main-yellow;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    p {
+      line-height: 1.4;
+      font-size: 14px;
+    }
+
+    ul {
+      li {
+        margin-bottom: 6px;
+
+        a {
+          color: $main-white;
+          font-size: 14px;
+
+          &:hover {
+            color: $main-blue;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      .text-input {
+        padding: 8px 10px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        background-color: #eee;
+        color: $main-black;
+      }
+
+      .btn {
+        background-color: $main-blue;
+        color: $main-white;
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 14px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: darken($main-blue, 10%);
+        }
+      }
+
+      .success-message {
+        margin-top: 8px;
+        color: $main-yellow;
+        font-weight: 600;
+        font-size: 13px;
+      }
+    }
+  }
+
+  .footer-bottom {
+    text-align: center;
+    color: #aaa;
+    border-top: 1px solid #444;
+    margin-top: 20px;
+    padding-top: 10px;
+    font-size: 13px;
+  }
+
+  @media screen and (max-width: $breakpoint-md) {
+    .footer-content {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-section {
+      text-align: center;
+    }
+  }
+}
